@@ -20,8 +20,8 @@ body {
 }
 
 .container {
-  height: 60%;
-  min-width: 320px;
+  min-height: 60%;
+  min-width: 300px;
   max-width: 870px;
   background-color: #FCFBFA;
   border-radius: 10px;
@@ -43,7 +43,7 @@ body {
 }
 
 .main__title--login {
-  margin-top: 25px;
+  margin-top: 30px;
   text-align: center;
   font-size: 18px;
 }
@@ -62,18 +62,29 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .reg-form__table--1 {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 200px 320px 1fr;
-      grid-template-columns: 200px 320px 1fr;
-  -ms-grid-rows: (40px)[3];
-      grid-template-rows: repeat(3, 40px);
+  -ms-grid-columns: 180px 320px 1fr;
+      grid-template-columns: 180px 320px 1fr;
+  -ms-grid-rows: (40px)[3] 80px;
+      grid-template-rows: repeat(3, 40px) 80px;
   grid-gap: 10px;
-      grid-template-areas: "label-email email email-details" "label-pwd1 pwd1 pwd-details" "label-pwd2 pwd2 pwd-details";
+      grid-template-areas: "label-email email email-details" "label-pwd1 pwd1 pwd-details" "label-pwd2 pwd2 pwd-details" "label-country countries pwd-details";
+}
+
+.reg-form__table--2 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 180px 180px 180px 1fr;
+      grid-template-columns: 180px 180px 180px 1fr;
+  -ms-grid-rows: 40px;
+      grid-template-rows: 40px;
+  grid-gap: 10px;
+      grid-template-areas: "label-name first-name family-name empty";
 }
 
 .reg-form__input {
@@ -93,14 +104,38 @@ body {
   border-bottom: 2px solid #6A9D67;
 }
 
+.reg-form__input--name {
+  width: 200px !important;
+}
+
 .reg-form__label {
-  height: 30px;
-  width: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  padding-top: auto;
+  padding-right: 9px;
+  height: 40px;
+  width: 190px;
   color: #4F4F4F;
   font-size: 15px;
   text-align: right;
-  line-height: 4;
-  border: 1px solid black;
+  line-height: 20px;
+  position: relative;
+}
+
+.reg-form__label::after {
+  content: '*';
+  color: #C74634;
+  font-size: 22px;
+  font-weight: bold;
+  position: absolute;
+  right: -6px;
 }
 
 .reg-form__details {
@@ -153,7 +188,57 @@ body {
 
 .pwd-details {
   -ms-grid-row: 2;
-  -ms-grid-row-span: 2;
+  -ms-grid-row-span: 3;
   -ms-grid-column: 3;
   grid-area: pwd-details;
+  padding-top: 10px;
+}
+
+.label-country {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  grid-area: label-country;
+  margin-top: 25px;
+}
+
+#countries {
+  -ms-grid-row: 4;
+  -ms-grid-column: 2;
+  grid-area: countries;
+  border-radius: 4px;
+  height: 40px;
+  margin-top: 35px;
+  color: #666;
+  background: -webkit-gradient(linear, left top, left bottom, from(#e7e7e7), to(#ffffff));
+  background: linear-gradient(to bottom, #e7e7e7 0%, #ffffff 100%);
+  border: 1px solid #cacaca !important;
+  padding: 8px 10px;
+  cursor: pointer;
+  width: 324px;
+  font-size: 16px;
+  border-color: #DEE4E7;
+}
+
+.label-name {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: label-name;
+}
+
+#first-name {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: first-name;
+}
+
+#family-name {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: family-name;
+}
+
+.name-details {
+  -ms-grid-row: 1;
+  -ms-grid-column: 4;
+  grid-area: empty;
 }

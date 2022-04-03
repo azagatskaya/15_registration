@@ -22,17 +22,61 @@
 			<p class="main__title--login">У Вас уже есть учетная запись Oracle? <a href="">Вход</a></p>
 			<form action="" method="get" class="main__reg-form reg-form">
 				<div class="reg-form__table--1">
-					<label for="email" class="reg-form__label label-email">Адрес электронной почты</label>
+					<div class="reg-form__label label-email">Адрес электронной почты</div>
 					<input type="email" class="reg-form__input" id="email">
 					<p class="reg-form__details email-details">Ваш адрес электронной почты одновременно является Вашим именем пользователя.
 						</p>
-					<label for="password1" class="reg-form__label label-pwd1">Пароль</label>
+					<div class="reg-form__label label-pwd1">Пароль</div>
 					<input type="password1" class="reg-form__input" minlength="8" maxlength="50" id="password1">
-					<label for="password2" class="reg-form__label label-pwd2">Введите пароль еще раз</label>
+					<div class="reg-form__label label-pwd2">Введите пароль еще раз</div>
 					<input type="password" class="reg-form__input" minlength="8" maxlength="50" id="password2">
 					<p class="reg-form__details pwd-details">Пароли должны быть не короче 8 символов, должны содержать буквы обоих регистров, а также хотя бы одну цифру и специальный символ. Они не должны совпадать с адресом электронной почты или содержать его часть.
 					</p>
+					<div class="reg-form__label label-country">Страна</div>
+					<select id="countries">
+						<option value="" title="-Выберите-">-Выберите-</option>
+						<option value="AQ" title="Антарктида">Антарктида</option>
+						<option value="BR" title="Бразилия">Бразилия</option>
+						<option value="KZ" title="Казахстан">Казахстан</option>
+						<option value="SK" title="Словакия (Словацкая Республика)">Словакия</option>
+						<option value="UA" title="Украина">Украина</option>
+						<option value="FI" title="Финляндия">Финляндия</option>
+					</select>
 				</div>
+
+				<!-- <div class="reg-form__table--2">
+					<div class="reg-form__label label-name">Имя</div>
+					<input type="text" class="reg-form__input reg-form__input--name" id="first-name" placeholder="Имя">
+					<input type="text" class="reg-form__input reg-form__input--name" id="family-name" placeholder="Фамилия">
+					<p class="reg-form__details name-details">
+					</p>
+				</div> -->
+
+
+				<div class="reg-form__table--1">
+					<div class="reg-form__label label-email">Адрес электронной почты</div>
+					<input type="email" class="reg-form__input" id="email">
+					<p class="reg-form__details email-details">Ваш адрес электронной почты одновременно является Вашим именем пользователя.
+					</p>
+					<div class="reg-form__label label-pwd1">Пароль</div>
+					<input type="password1" class="reg-form__input" minlength="8" maxlength="50" id="password1">
+					<div class="reg-form__label label-pwd2">Введите пароль еще раз</div>
+					<input type="password" class="reg-form__input" minlength="8" maxlength="50" id="password2">
+					<p class="reg-form__details pwd-details">Пароли должны быть не короче 8 символов, должны содержать буквы обоих регистров, а также хотя бы одну цифру и специальный символ. Они не должны совпадать с адресом электронной почты или содержать его
+						часть.
+					</p>
+					<div class="reg-form__label label-country">Страна</div>
+					<select id="countries">
+						<option value="" title="-Выберите-">-Выберите-</option>
+						<option value="AQ" title="Антарктида">Антарктида</option>
+						<option value="BR" title="Бразилия">Бразилия</option>
+						<option value="KZ" title="Казахстан">Казахстан</option>
+						<option value="SK" title="Словакия (Словацкая Республика)">Словакия</option>
+						<option value="UA" title="Украина">Украина</option>
+						<option value="FI" title="Финляндия">Финляндия</option>
+					</select>
+				</div>
+
 			</form>
 
 

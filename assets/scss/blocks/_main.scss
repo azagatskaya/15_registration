@@ -27,8 +27,8 @@ body {
 }
 
 .container {
-	height: 60%;
-	min-width: 320px;
+	min-height: 60%;
+	min-width: 300px;
 	max-width: 870px;
 	background-color: $bg;
 	border-radius: 10px;
@@ -48,7 +48,7 @@ body {
 			font-weight: 600;
 		}
 		&--login{
-			margin-top: 25px;
+			margin-top: 30px;
 			text-align: center;
 			font-size: 18px;
 		}
@@ -58,19 +58,28 @@ body {
 		flex-direction: column;
 		justify-content: flex-start;
 		align-items: center;
-		margin-top: 20px;
+		margin-top: 30px;
 	}
 }
 .reg-form{
 	&__table--1{
 		display: grid;
-		grid-template-columns: 200px 320px 1fr;
-		grid-template-rows: repeat(3, 40px);
+		grid-template-columns: 180px 320px 1fr;
+		grid-template-rows: repeat(3, 40px) 80px;
 		grid-gap: 10px;
 		grid-template-areas: 
 		"label-email email email-details"
 		"label-pwd1 pwd1 pwd-details"
-		"label-pwd2 pwd2 pwd-details";
+		"label-pwd2 pwd2 pwd-details"
+		"label-country countries pwd-details";
+	}
+	&__table--2 {
+		display: grid;
+		grid-template-columns: 180px 180px 180px 1fr;
+		grid-template-rows: 40px;
+		grid-gap: 10px;
+		grid-template-areas:
+		"label-name first-name family-name empty";
 	}
 	&__input{
 		height: 35px;
@@ -86,15 +95,31 @@ body {
 			border: none;
 			border-bottom: 2px solid $light-green;
 		}
+		&--name{
+			width: 200px !important;
+		}
 	}
 	&__label{
-		height: 30px;
-		width: 200px;
+		display: flex;
+		justify-content: flex-end;
+		align-items: flex-end;
+		padding-top: auto;
+		padding-right: 9px;
+		height: 40px;
+		width: 190px;
 		color: $font-grey;
 		font-size: 15px;
 		text-align: right;
-		line-height: 4;
-		border: 1px solid black;
+		line-height: 20px;
+		position: relative;
+		&::after{
+			content: '*';
+			color: $red;
+			font-size: 22px;
+			font-weight: bold;
+			position: absolute;
+			right: -6px;
+		}
 	}
 	&__details{
 		font-size: 11px;
@@ -126,5 +151,36 @@ body {
 }
 .pwd-details{
 	grid-area: pwd-details;
+	padding-top: 10px;
+}
+.label-country{
+	grid-area: label-country;
+	margin-top: 25px;
+}
+#countries{
+	grid-area: countries;
+	border-radius: 4px;
+	height: 40px;
+	margin-top: 35px;
+	color: #666;
+	background: linear-gradient(to bottom, #e7e7e7 0%, #ffffff 100%);
+	border: 1px solid #cacaca !important;
+	padding: 8px 10px;
+	cursor: pointer;
+	width: 324px;
+	font-size: 16px;
+	border-color: #DEE4E7;
+}
+.label-name{
+	grid-area: label-name;	
+}
+#first-name{
+	grid-area: first-name;
+}
+#family-name{
+	grid-area: family-name;
+}
+.name-details{
+	grid-area: empty;
 }
 
