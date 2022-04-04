@@ -23,26 +23,40 @@
 			<form action="" method="get" class="main__reg-form reg-form">
 
 				<div class="reg-form__table--1">
-					<!-- <div class="reg-form__row"> -->
-						<div class="reg-form__label label-email">Адрес электронной почты</div>
-						<div class="input-email">
-							<input type="email" class="reg-form__input" id="email">
-							<div class="status-message">
-								<div class="img-div"><img src="./assets/images/checkcircle-s.svg" alt="nok"></div>
-								<div class="status-message__text"></div>
-							</div>
+
+					<div class="reg-form__label label-email">Адрес электронной почты</div>
+					<div class="input-email">
+						<input type="email" class="reg-form__input" id="email">
+						<div class="status-message email-status">
+							<div class="img-div"><img src="./assets/images/checkcircle-s.svg" alt="nok"></div>
+							<div class="status-message__text"></div>
 						</div>
-						<p class="reg-form__details email-details">Ваш адрес электронной почты одновременно является Вашим именем пользователя.
-						</p>
-					<!-- </div> -->
+					</div>
+					<p class="reg-form__details email-details">Ваш адрес электронной почты одновременно является Вашим именем пользователя.
+					</p>
+
 					<div class="reg-form__label label-pwd1">Пароль</div>
-					<input type="password1" class="reg-form__input" minlength="8" maxlength="50" id="password1" autocomplete="new-password">
+					<div class="input-password1">
+						<input type="password" class="reg-form__input" minlength="8" maxlength="50" id="password1" autocomplete="new-password">
+						<div class="status-message password1-status">
+							<div class="img-div"><img src="./assets/images/checkcircle-s.svg" alt="nok"></div>
+							<div class="status-message__text"></div>
+						</div>
+					</div>
+
 					<div class="reg-form__label label-pwd2">Введите пароль еще раз</div>
-					<input type="password" class="reg-form__input" minlength="8" maxlength="50" id="password2">
+					<div class="input-password2">
+						<input type="password" class="reg-form__input" minlength="8" maxlength="50" id="password2">
+						<div class="status-message password1-status">
+							<div class="img-div"><img src="./assets/images/checkcircle-s.svg" alt="nok"></div>
+							<div class="status-message__text"></div>
+						</div>
+					</div>
 					<p class="reg-form__details pwd-details">Пароли должны быть не короче 8 символов, должны содержать буквы обоих регистров, а также хотя бы одну цифру и специальный символ. Они не должны совпадать с адресом электронной почты или
 						содержать его
 						часть.
 					</p>
+
 					<div class="reg-form__label label-country">Страна</div>
 					<select id="countries">
 						<option value="" title="-Выберите-">-Выберите-</option>
@@ -54,32 +68,6 @@
 						<option value="FI" title="Финляндия">Финляндия</option>
 					</select>
 				</div>
-
-
-
-				<!-- <div class="reg-form__table--1">
-					<div class="reg-form__label label-email">Адрес электронной почты</div>
-					<input type="email" class="reg-form__input" id="email">
-					<p class="reg-form__details email-details">Ваш адрес электронной почты одновременно является Вашим именем пользователя.
-					</p>
-					<div class="reg-form__label label-pwd1">Пароль</div>
-					<input type="password1" class="reg-form__input" minlength="8" maxlength="50" id="password1" autocomplete="new-password">
-					<div class="reg-form__label label-pwd2">Введите пароль еще раз</div>
-					<input type="password" class="reg-form__input" minlength="8" maxlength="50" id="password2">
-					<p class="reg-form__details pwd-details">Пароли должны быть не короче 8 символов, должны содержать буквы обоих регистров, а также хотя бы одну цифру и специальный символ. Они не должны совпадать с адресом электронной почты или
-						содержать его часть.
-					</p>
-					<div class="reg-form__label label-country">Страна</div>
-					<select id="countries">
-						<option value="" title="-Выберите-">-Выберите-</option>
-						<option value="AQ" title="Антарктида">Антарктида</option>
-						<option value="BR" title="Бразилия">Бразилия</option>
-						<option value="KZ" title="Казахстан">Казахстан</option>
-						<option value="SK" title="Словакия (Словацкая Республика)">Словакия</option>
-						<option value="UA" title="Украина">Украина</option>
-						<option value="FI" title="Финляндия">Финляндия</option>
-					</select>
-				</div> -->
 
 				<div class="reg-form__table--2">
 					<div class="reg-form__label label-name">Имя</div>
@@ -105,7 +93,7 @@
 						<input class="agreement__checkbox" type="checkbox" name="agreement" id="agreement">
 						<p class="agreement__text">Я понимаю и принимаю вышеизложенные условия</p>
 					</div>
-					<button class="button" type="submit">Создать учетную запись</button>
+					<button method="get" class="button" type="button" id="submit-button">Создать учетную запись</button>
 				</div>
 
 			</form>
