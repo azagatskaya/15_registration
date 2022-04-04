@@ -228,13 +228,13 @@ body {
   width: 20px;
 }
 
-#password1 {
+.input-password1 {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: pwd1;
 }
 
-#password2 {
+.input-password2 {
   -ms-grid-row: 3;
   -ms-grid-column: 2;
   grid-area: pwd2;
