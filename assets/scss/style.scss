@@ -104,7 +104,7 @@ body {
 		margin-top: 30px;
 		display: grid;
 		grid-template-columns: 180px 1fr;
-		grid-template-rows: 35px 15px 60px;
+		grid-template-rows: minmax(35px, autofit) 15px 60px;
 		grid-gap: 10px;
 		grid-template-areas:
 			"empty policy"
@@ -276,6 +276,7 @@ input::placeholder {
 
 	&__policy {
 		grid-area: policy;
+
 	}
 
 	&__checkbox-wrapper {
@@ -308,4 +309,17 @@ input::placeholder {
 		background-color: $dark-green;
 	}
 }
-
+.img--valid{
+	width: 20px;
+	height: 20px;
+}
+.input--valid{
+	border-bottom-color: $light-green;
+}
+.img--invalid{
+	width: 16px;
+	height: 16px;
+}
+.input--invalid{
+	border-bottom-color: $red;
+}
