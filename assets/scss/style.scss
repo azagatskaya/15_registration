@@ -17,16 +17,10 @@ body {
 
 body {
 	background-image: url('../images/bgimg.jpg');
-	background-position: center;
+	background-repeat: no-repeat;
+	background-position: 58% 20%;
+	background-attachment: fixed;
 	background-size: cover;
-}
-
-.label:after {
-	content: "*";
-	color: #BB501C;
-	display: inline-block;
-	font-size: 20px;
-	margin-left: 2px;
 }
 
 .container {
@@ -43,7 +37,6 @@ body {
 }
 
 .main {
-
 	&__title {
 		font-size: 34px;
 		text-align: center;
@@ -74,7 +67,7 @@ body {
 		margin-top: 12px;
 		display: grid;
 		grid-template-columns: 180px 320px 1fr;
-		grid-template-rows: repeat(3, minmax(40px, autofit)) 80px;
+		grid-template-rows: repeat(3, minmax(40px, autofit)) 40px;
 		grid-gap: 10px;
 		grid-template-areas:
 			"label-email email email-details"
@@ -130,7 +123,7 @@ body {
 		}
 
 		&--name {
-			width: 200px !important;
+			width: 190px !important;
 		}
 	}
 
@@ -162,54 +155,89 @@ body {
 		font-size: 11px;
 		color: $font-light-grey;
 		line-height: 1.3em;
+	}
+}
 
+.label {
+	&:after {
+		content: "*";
+		color: #BB501C;
+		display: inline-block;
+		font-size: 20px;
+		margin-left: 2px;
+	}
+
+	&-email {
+		grid-area: label-email;
+	}
+
+	&-pwd1 {
+		grid-area: label-pwd1;
+	}
+
+	&l-pwd2 {
+		grid-area: label-pwd2;
+	}
+
+	&-country {
+		grid-area: label-country;
+
+	}
+
+	&-name {
+		grid-area: label-name;
+	}
+}
+
+.input {
+	&-email {
+		grid-area: email;
+	}
+
+	&-password1 {
+		grid-area: pwd1;
+	}
+
+	&-password2 {
+		grid-area: pwd2;
+	}
+
+	&-countries {
+		grid-area: countries;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: flex-start;
+	}
+
+	&-firstname {
+		grid-area: first-name;
 	}
 
 }
 
-.label-email {
-	grid-area: label-email;
-}
-
-.label-pwd1 {
-	grid-area: label-pwd1;
-}
-
-.label-pwd2 {
-	grid-area: label-pwd2;
-}
-
-.input-email {
-	grid-area: email;
-}
-
 .status-message {
 	display: none;
-	padding-top: 15px;
+	padding-top: 5px;
 	font-size: 12px;
 	display: flex;
 	flex-wrap: nowrap;
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: flex-start;
-	// line-height: 1.3;
+
 	& img {
 		display: none;
-		width: 20px;
-		height: 20px;
 	}
-	&__text{
+
+	&__text {
 		width: 300px;
+		padding-left: 3px;
 	}
 }
-.img-div{
+
+.img-div {
 	width: 20px;
-}
-.input-password1 {
-	grid-area: pwd1;
-}
-.input-password2 {
-	grid-area: pwd2;
 }
 
 .email-details {
@@ -221,16 +249,10 @@ body {
 	padding-top: 10px;
 }
 
-.label-country {
-	grid-area: label-country;
-	margin-top: 25px;
-}
-
-#countries {
-	grid-area: countries;
+.countries {
 	border-radius: 4px;
 	height: 40px;
-	margin-top: 35px;
+	margin-top: 10px;
 	color: #666;
 	background: linear-gradient(to bottom, #e7e7e7 0%, #ffffff 100%);
 	border: 1px solid #cacaca !important;
@@ -239,10 +261,6 @@ body {
 	width: 324px;
 	font-size: 16px;
 	border-color: #DEE4E7;
-}
-
-.label-name {
-	grid-area: label-name;
 }
 
 #first-name {
@@ -309,17 +327,21 @@ input::placeholder {
 		background-color: $dark-green;
 	}
 }
-.img--valid{
+
+.img--valid {
 	width: 20px;
 	height: 20px;
 }
-.input--valid{
+
+.input--valid {
 	border-bottom-color: $light-green;
 }
-.img--invalid{
+
+.img--invalid {
 	width: 16px;
 	height: 16px;
 }
-.input--invalid{
+
+.input--invalid {
 	border-bottom-color: $red;
 }

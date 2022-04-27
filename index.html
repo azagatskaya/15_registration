@@ -11,8 +11,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 	<link rel="icon" href="favicon.png">
 	<link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-	<link rel="stylesheet" href="./assets/scss/dist/nullstyle.css">
-	<link rel="stylesheet" href="./assets/scss/dist/style.css">
+	<link rel="stylesheet" href="./assets/css/nullstyle.css">
+	<link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
@@ -47,8 +47,8 @@
 					<div class="reg-form__label label-pwd2">Введите пароль еще раз</div>
 					<div class="input-password2">
 						<input type="password" class="reg-form__input" minlength="8" maxlength="50" id="password2">
-						<div class="status-message password1-status">
-							<div class="img-div"><img src="./assets/images/checkcircle-s.svg" alt="nok"></div>
+						<div class="status-message password2-status">
+							<div class="img-div"><img class="" src="./assets/images/checkcircle-s.svg" alt="nok"></div>
 							<div class="status-message__text"></div>
 						</div>
 					</div>
@@ -58,23 +58,41 @@
 					</p>
 
 					<div class="reg-form__label label-country">Страна</div>
-					<select id="countries">
-						<option value="" title="-Выберите-">-Выберите-</option>
-						<option value="AQ" title="Антарктида">Антарктида</option>
-						<option value="BR" title="Бразилия">Бразилия</option>
-						<option value="KZ" title="Казахстан">Казахстан</option>
-						<option value="SK" title="Словакия (Словацкая Республика)">Словакия</option>
-						<option value="UA" title="Украина">Украина</option>
-						<option value="FI" title="Финляндия">Финляндия</option>
-					</select>
+					<div class="input-countries">
+						<select class="countries" id="countries">
+							<option value="" title="-Выберите-">-Выберите-</option>
+							<option value="AQ" title="Антарктида">Антарктида</option>
+							<option value="BR" title="Бразилия">Бразилия</option>
+							<option value="KZ" title="Казахстан">Казахстан</option>
+							<option value="SK" title="Словакия (Словацкая Республика)">Словакия</option>
+							<option value="UA" title="Украина">Украина</option>
+							<option value="FI" title="Финляндия">Финляндия</option>
+						</select>
+						<div class="status-message countries-status">
+							<div class="img-div"><img class="" src="./assets/images/checkcircle-s.svg" alt="nok"></div>
+							<div class="status-message__text"></div>
+						</div>
+					</div>
 				</div>
 
 				<div class="reg-form__table--2">
 					<div class="reg-form__label label-name">Имя</div>
-					<input type="text" class="reg-form__input reg-form__input--name" id="first-name" placeholder="Имя">
-					<input type="text" class="reg-form__input reg-form__input--name" id="family-name" placeholder="Фамилия">
-					<p class="reg-form__details name-details">
-					</p>
+					<div class="input-firstname">
+						<input type="text" class="reg-form__input reg-form__input--name" id="firstname" placeholder="Имя">
+						<div class="status-message firstname-status">
+							<div class="img-div"><img class="" src="./assets/images/checkcircle-s.svg" alt="nok"></div>
+							<div class="status-message__text"></div>
+						</div>
+					</div>
+
+					<div class="input-familyname">
+						<input type="text" class="reg-form__input reg-form__input--name" id="familyname" placeholder="Фамилия">
+						<div class="status-message familyname-status">
+							<div class="img-div"><img class="" src="./assets/images/checkcircle-s.svg" alt="nok"></div>
+							<div class="status-message__text"></div>
+						</div>
+					</div>
+					<!-- <p class="reg-form__details name-details"></p> -->
 				</div>
 
 				<div class="reg-form__table--3">
