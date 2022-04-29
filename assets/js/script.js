@@ -314,38 +314,15 @@ function handleSubmit(e) {
   checkAllFields() ? alert(`Добро пожаловать, ${email.value}!`) : alert(errorMessage);
 }
 
+const functions = [checkEmail(email), checkPassword1(password1), checkPassword2(password2), checkCountries(country), checkFirstName(firstName), checkFamilyName(familyName), checkPosition(position), checkTelephone(tel), checkCompany(company), checkAgreement()]
+
 function checkAllFields() {
   let res = true;
-  if (!checkEmail(email)) {
-    res = false
-  }
-  if (!checkPassword1(password1)) {
-    res = false
-  }
-  if (!checkPassword2(password2)) {
-    res = false
-  }
-  if (!checkCountries(country)) {
-    res = false
-  }
-  if (!checkFirstName(firstName)) {
-    res = false
-  }
-  if (!checkFamilyName(familyName)) {
-    res = false
-  }
-  if (!checkPosition(position)) {
-    res = false
-  }
-  if (!checkTelephone(tel)) {
-    res = false
-  }
-  if (!checkCompany(company)) {
-    res = false
-  }
-  if (!checkAgreement()) {
-    res = false
-  };
+  functions.forEach(foo => {
+    if (!foo) {
+      res = false;
+    }
+  });
   return res;
 }
 
