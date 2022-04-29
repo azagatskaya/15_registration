@@ -21,9 +21,7 @@
 			<p class="main__title">Создание учетной записи <span>Oracle</span></p>
 			<p class="main__title--login">У Вас уже есть учетная запись Oracle? <a href="">Вход</a></p>
 			<form action="" method="get" class="main__reg-form reg-form">
-
 				<div class="reg-form__table--1">
-
 					<div class="reg-form__label label-email">Адрес электронной почты</div>
 					<div class="input-email">
 						<input type="email" class="reg-form__input" id="email">
@@ -34,7 +32,6 @@
 					</div>
 					<p class="reg-form__details email-details">Ваш адрес электронной почты одновременно является Вашим именем пользователя.
 					</p>
-
 					<div class="reg-form__label label-pwd1">Пароль</div>
 					<div class="input-password1">
 						<input type="password" class="reg-form__input" minlength="8" maxlength="50" id="password1" autocomplete="new-password">
@@ -43,7 +40,6 @@
 							<div class="status-message__text"></div>
 						</div>
 					</div>
-
 					<div class="reg-form__label label-pwd2">Введите пароль еще раз</div>
 					<div class="input-password2">
 						<input type="password" class="reg-form__input" minlength="8" maxlength="50" id="password2">
@@ -56,7 +52,6 @@
 						содержать его
 						часть.
 					</p>
-
 					<div class="reg-form__label label-country">Страна</div>
 					<div class="input-countries">
 						<select class="countries" id="countries">
@@ -74,7 +69,6 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="reg-form__table--2">
 					<div class="reg-form__label label-name">Имя</div>
 					<div class="input-firstname">
@@ -84,7 +78,6 @@
 							<div class="status-message__text"></div>
 						</div>
 					</div>
-
 					<div class="input-familyname">
 						<input type="text" class="reg-form__input reg-form__input--name" id="familyname" placeholder="Фамилия">
 						<div class="status-message familyname-status">
@@ -92,18 +85,33 @@
 							<div class="status-message__text"></div>
 						</div>
 					</div>
-					<!-- <p class="reg-form__details name-details"></p> -->
 				</div>
-
 				<div class="reg-form__table--3">
 					<div class="reg-form__label label-position">Наименование должности</div>
-					<input type="text" class="reg-form__input" minlength="3" maxlength="60" id="position">
+					<div class="input-position">
+						<input type="text" class="reg-form__input" minlength="3" maxlength="60" id="position">
+						<div class="status-message position-status">
+							<div class="img-div"><img class="" src="./assets/images/checkcircle-s.svg" alt="nok"></div>
+							<div class="status-message__text"></div>
+						</div>
+					</div>
 					<div class="reg-form__label label-tel">Рабочий телефон</div>
-					<input type="tel" class="reg-form__input" id="tel">
+					<div class="input-tel">
+						<input type="tel" class="reg-form__input" id="tel">
+						<div class="status-message tel-status">
+							<div class="img-div"><img class="" src="./assets/images/checkcircle-s.svg" alt="nok"></div>
+							<div class="status-message__text"></div>
+						</div>
+					</div>
 					<div class="reg-form__label label-company">Название компании</div>
-					<input type="text" class="reg-form__input" minlength="2" maxlength="50" id="company">
+					<div class="input-company">
+						<input type="text" class="reg-form__input" minlength="2" maxlength="50" id="company">
+						<div class="status-message company-status">
+							<div class="img-div"><img class="" src="./assets/images/checkcircle-s.svg" alt="nok"></div>
+							<div class="status-message__text"></div>
+						</div>
+					</div>
 				</div>
-
 				<div class="reg-form__table--4 reg-form__agreement agreement">
 					<div class="empty"></div>
 					<p class="agreement__policy">Использование веб-сайта Oracle осуществляется в соответствии с условиями использования Oracle.com и политикой конфиденциальности Oracle.</p>
@@ -111,15 +119,10 @@
 						<input class="agreement__checkbox" type="checkbox" name="agreement" id="agreement">
 						<p class="agreement__text">Я понимаю и принимаю вышеизложенные условия</p>
 					</div>
-					<button method="get" class="button" type="button" id="submit-button">Создать учетную запись</button>
+					<button method="get" class="button" type="submit" id="submit-button">Создать учетную запись</button>
 				</div>
-
 			</form>
-
-
 		</main>
-
-
 		<footer class="footer"></footer>
 	</div>
 

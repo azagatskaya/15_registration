@@ -59,7 +59,7 @@ body {
 .reg-form__table--2 {
   display: grid;
   grid-template-columns: 180px 190px 190px;
-  grid-template-rows: 40px;
+  grid-template-rows: minmax(40px, autofit);
   grid-gap: 10px;
   grid-template-areas: "label-name first-name family-name empty";
 }
@@ -67,7 +67,7 @@ body {
   margin-top: 12px;
   display: grid;
   grid-template-columns: 180px 320px;
-  grid-template-rows: repeat(3, 40px);
+  grid-template-rows: repeat(3, minmax(40px, autofit));
   grid-gap: 10px;
 }
 .reg-form__table--4 {
@@ -253,6 +253,10 @@ input::placeholder {
 }
 .agreement__checkbox {
   margin-right: 10px;
+}
+.agreement--notagreed {
+  color: #C74634;
+  font-weight: 600;
 }
 
 .button {

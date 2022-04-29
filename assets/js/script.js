@@ -6,7 +6,7 @@ const inputsData = {
     negMsg: 'Это недопустимый адрес электронной почты'
   },
   password1: {
-    reg: /[a-zA-Z0-9]+\W+|\W+[a-zA-Z0-9]+/g,
+    reg: /[a-zA-Z0-9\W]/ig, //+\W+|\W+[a-zA-Z0-9]+/g,
     label: 'Пароль',
     posMsg: 'Пароль соответствует требованиям',
     negMsg: 'Пароль не соответствует требованиям безопасности'
@@ -32,146 +32,240 @@ const inputsData = {
     label: 'Фамилия',
     posMsg: '',
     negMsg: 'Используйте только буквы, апострофы, дефисы, запятые, пробелы и точки.'
+  },
+  position: {
+    label: 'Наименование должности',
+    posMsg: '',
+    negMsg: ''
+  },
+  tel: {
+    reg: /[0-9]/,
+    label: 'Рабочий телефон',
+    posMsg: '',
+    negMsg: 'Это недопустимый номер телефона'
+  },
+  company: {
+    label: 'Название компании',
+    posMsg: '',
+    negMsg: ''
   }
 }
 
-document.querySelector("#email").addEventListener('focusout', checkEmail);
-document.querySelector("#password1").addEventListener('focusout', checkPassword1);
-document.querySelector("#password2").addEventListener('focusout', checkPassword2);
-document.querySelector("#countries").addEventListener('focusout', checkCountries);
-document.querySelector("#firstname").addEventListener('focusout', checkFirstName);
-document.querySelector("#familyname").addEventListener('focusout', checkFamilyName);
+const email = document.querySelector("#email");
+getFromLocalStorage(email);
+email.addEventListener('focusout', checkEmail);
 
-function checkEmail() {
+const password1 = document.querySelector("#password1");
+// getFromLocalStorage(password1);
+password1.addEventListener('focusout', checkPassword1);
+
+const password2 = document.querySelector("#password2");
+// getFromLocalStorage(password2);
+password2.addEventListener('focusout', checkPassword2);
+
+const country = document.querySelector("#countries");
+getFromLocalStorage(country);
+country.addEventListener('focusout', checkCountries);
+
+const firstName = document.querySelector("#firstname");
+getFromLocalStorage(firstName);
+firstName.addEventListener('input', checkFirstName);
+
+const familyName = document.querySelector("#familyname");
+getFromLocalStorage(familyName);
+familyName.addEventListener('input', checkFamilyName);
+
+const position = document.querySelector("#position");
+getFromLocalStorage(position);
+position.addEventListener('input', checkPosition);
+
+const tel = document.querySelector("#tel");
+getFromLocalStorage(tel);
+tel.addEventListener('focusout', checkTelephone);
+tel.addEventListener('input', handleTelChange);
+
+const company = document.querySelector("#company");
+getFromLocalStorage(company);
+company.addEventListener('focusout', checkCompany);
+
+
+function getFromLocalStorage(element) {
+  element.value = localStorage.getItem(`${element.id}`) || '';
+}
+
+function checkEmail(event) {
+  const el = event.target ? event.target : event;
   const {
     reg,
     label,
     posMsg,
     negMsg
   } = inputsData.email;
-  console.log(reg, label, posMsg, negMsg);
-  console.log(this.value);
-  let regFlag = validateValue(reg, this.value);
-  showMessage(this, regFlag, posMsg, negMsg, label);
+  let regFlag = validateValue(reg, el.value);
+  return showMessage(el, regFlag, posMsg, negMsg, label);
 }
 
-function checkPassword1() {
+function checkPassword1(event) {
+  const el = event.target ? event.target : event;
   const {
     reg,
     label,
     posMsg,
     negMsg
   } = inputsData.password1;
-  console.log(reg, label, posMsg, negMsg);
-  console.log(this.value);
-  let regFlag = (validateValue(reg, this.value) && this.value.length >= 8) ? true : false;
-  showMessage(this, regFlag, posMsg, negMsg, label);
+  let regFlag = (validateValue(reg, el.value) && el.value.length >= 8) ? true : false;
+  return showMessage(el, regFlag, posMsg, negMsg, label);
 }
 
-function checkPassword2() {
+function checkPassword2(event) {
+  const el = event.target ? event.target : event;
   const {
     label,
     posMsg,
     negMsg
   } = inputsData.password2;
-  console.log(label, posMsg, negMsg);
-  console.log(this.value);
   let regFlag =
-    (this.value === document.querySelector('#password1').value) ? true : false;
-  console.log(regFlag);
-  showMessage(this, regFlag, posMsg, negMsg, label);
+    (el.value === document.querySelector('#password1').value) ? true : false;
+  return showMessage(el, regFlag, posMsg, negMsg, label);
 }
 
-function checkCountries() {
+function checkCountries(event) {
+  const el = event.target ? event.target : event;
   const {
     label,
     posMsg,
     negMsg
   } = inputsData.countries;
-  console.log(label, posMsg, negMsg);
-  console.log(this.value);
-  let regFlag =
-    (this.value !== '') ? true : false;
-  console.log(regFlag);
-  showMessage(this, regFlag, posMsg, negMsg, label);
+  let regFlag = isValueEmpty(el.value);
+  return showMessage(el, regFlag, posMsg, negMsg, label);
 }
 
-function checkFirstName() {
+function checkFirstName(event) {
+  const el = event.target ? event.target : event;
   const {
     reg,
     label,
     posMsg,
     negMsg
   } = inputsData.firstName;
-  console.log(label, posMsg, negMsg);
-  console.log(this.value);
-  let regFlag = validateValue(reg, this.value);
-  showMessage(this, regFlag, posMsg, negMsg, label);
+  let regFlag = validateValue(reg, el.value);
+  return showMessage(el, regFlag, posMsg, negMsg, label);
 }
 
-function checkFamilyName() {
+function checkFamilyName(event) {
+  const el = event.target ? event.target : event;
   const {
     reg,
     label,
     posMsg,
     negMsg
   } = inputsData.familyName;
-  console.log(label, posMsg, negMsg);
-  console.log(this.value);
-  let regFlag = validateValue(reg, this.value);
-  showMessage(this, regFlag, posMsg, negMsg, label);
+  let regFlag = validateValue(reg, el.value);
+  return showMessage(el, regFlag, posMsg, negMsg, label);
 }
 
+function checkPosition(event) {
+  const el = event.target ? event.target : event;
+  const {
+    label,
+    posMsg,
+    negMsg
+  } = inputsData.position;
+  let regFlag = isValueEmpty(el.value);
+  return showMessage(el, regFlag, posMsg, negMsg, label);
+}
 
+function checkTelephone(event) {
+  const el = event.target ? event.target : event;
+  const {
+    reg,
+    label,
+    posMsg,
+    negMsg
+  } = inputsData.tel;
+  let regFlag = validateValue(reg, el.value);
+  return showMessage(el, regFlag, posMsg, negMsg, label);
+}
+
+function handleTelChange(event) {
+  let telValue = event.target.value;
+  console.log(telValue);
+  event.target.value = telValue.replace(/[^0-9+]/g, '');
+}
+
+function checkCompany(event) {
+  const el = event.target ? event.target : event;
+  const {
+    label,
+    posMsg,
+    negMsg
+  } = inputsData.company;
+  let regFlag = isValueEmpty(el.value);
+  return showMessage(el, regFlag, posMsg, negMsg, label);
+}
+
+function validateValue(reg, val) {
+  return reg.test(val);
+}
+
+function isValueEmpty(value) {
+  return (value !== '') ? true : false;
+}
 
 function showMessage(element, regFlag, posMsg, negMsg, label) {
   if (element.value != '') {
+    if (element.id !== 'password1' && element.id !== 'password2') {
+      localStorage.setItem(element.id, element.value);
+    }
     if (regFlag === true) {
       setPositiveResult(element, posMsg);
+      return true;
     } else {
       setNegativeResult(element, negMsg);
+      return false;
     }
   } else {
     setNegativeResult(element, label);
+    return false;
   }
 }
 
 function setPositiveResult(element, msg) {
   removeIconClass(element, 'img--invalid');
-  addIconClass(element, 'img--valid'); // размер иконки ширина высота
+  addIconClass(element, 'img--valid');
   if (isClassInList(element, 'input--invalid')) {
     element.classList.remove('input--invalid');
   }
   if (!isClassInList(element, 'input--valid')) {
-    element.classList.add('input--valid'); // меняем цвет нижней границы
+    element.classList.add('input--valid');
   }
-  setPositiveIcon(element.id); // присваиваем нужную иконку (pos/neg)
-  setStatusMsg(element.id, msg); // присваиваем текст сообщения
-  displayImg(element.id); // показывает картинку ок/не ок
-  displayStatusMsg(element.id); // показываем сообщение с резу
+  setPositiveIcon(element.id);
+  setStatusMsg(element.id, msg);
+  displayImg(element.id);
+  displayStatusMsg(element.id);
 }
 
 function setNegativeResult(element, msg) {
   removeIconClass(element, 'img--valid');
-  addIconClass(element, 'img--invalid'); // размер иконки ширина высота
+  addIconClass(element, 'img--invalid');
   if (isClassInList(element, 'input--valid')) {
     element.classList.remove('input--valid');
   }
   if (!isClassInList(element, 'input--invalid')) {
     element.classList.add('input--invalid');
-  } // меняем цвет нижней границы
-  setNegativeIcon(element.id); // присваиваем нужную иконку (pos/neg)
-  setStatusMsg(element.id, msg); // присваиваем текст сообщения
-  displayImg(element.id); // показывает картинку ок/не ок
-  displayStatusMsg(element.id); // показываем сообщение с резу
+  }
+  setNegativeIcon(element.id);
+  setStatusMsg(element.id, msg);
+  displayImg(element.id);
+  displayStatusMsg(element.id);
 }
 
 function setPositiveIcon(elementId) {
-  document.querySelector(`.${elementId}-status img`).src = './assets/images/checkcircle-s.svg'; // присваиваем нужную иконку (pos/neg)
+  document.querySelector(`.${elementId}-status img`).src = './assets/images/checkcircle-s.svg';
 }
 
 function setNegativeIcon(elementId) {
-  document.querySelector(`.${elementId}-status img`).src = './assets/images/error-s.svg'; // присваиваем нужную иконку (pos/neg)
+  document.querySelector(`.${elementId}-status img`).src = './assets/images/error-s.svg';
 }
 
 function isClassInList(element, className) {
@@ -210,55 +304,59 @@ function displayStatusMsg(elementId) {
   document.querySelector(".input-" + elementId + " .status-message").style.display = "flex";
 }
 
-function check() {
-  switch (elementId) {
-    case "first-name":
-      reg = /[a-zA-Z][^0-9]/i;
-      elementLabel = "Имя";
-      textMsgPositive = "";
-      textMsgNegative =
-        "Используйте только буквы, апострофы, дефисы, запятые, пробелы и точки.";
-      break;
-    case "family-name":
-      reg = /[a-zA-Z][^0-9]/i;
-      elementLabel = "Фамилия";
-      textMsgPositive = "";
-      textMsgNegative =
-        "Используйте только буквы, апострофы, дефисы, запятые, пробелы и точки.";
-      break;
-    case "position":
-      elementLabel = "Наименование должности";
-      textMsgPositive = "";
-      textMsgNegative = "";
-      break;
-    case "tel":
-      reg = /[^a-zA-Z][0-9]/;
-      elementLabel = "Рабочий телефон";
-      textMsgPositive = "";
-      textMsgNegative = "Это недопустимый номер телефона";
-      break;
-    case "company":
-      elementLabel = "Название компании";
-      textMsgPositive = "";
-      textMsgNegative = "";
-      break;
-    case "agreement":
-  }
+//submission
+
+document.querySelector("#submit-button").addEventListener('click', handleSubmit);
+
+function handleSubmit(e) {
+  e.preventDefault();
+  let errorMessage = 'Необходимо заполнить все поля';
+  checkAllFields() ? alert(`Добро пожаловать, ${email.value}!`) : alert(errorMessage);
 }
 
-function validateValue(reg, val) {
-  return reg.test(val);
+function checkAllFields() {
+  let res = true;
+  if (!checkEmail(email)) {
+    res = false
+  }
+  if (!checkPassword1(password1)) {
+    res = false
+  }
+  if (!checkPassword2(password2)) {
+    res = false
+  }
+  if (!checkCountries(country)) {
+    res = false
+  }
+  if (!checkFirstName(firstName)) {
+    res = false
+  }
+  if (!checkFamilyName(familyName)) {
+    res = false
+  }
+  if (!checkPosition(position)) {
+    res = false
+  }
+  if (!checkTelephone(tel)) {
+    res = false
+  }
+  if (!checkCompany(company)) {
+    res = false
+  }
+  if (!checkAgreement()) {
+    res = false
+  };
+  return res;
 }
 
-document.querySelector("#submit-button").addEventListener("click", regResult);
-
-function regResult() {
-  let positiveFlags = document.querySelectorAll(".status-message img");
-  console.log(positiveFlags);
-  for (let element of positiveFlags) {
-    if (element.src.split("/images")[1] == "/error-s.svg") {
-      return alert("Какое-то из полей заполнено неверно.");
-    }
+function checkAgreement() {
+  const agreementCheckbox = document.querySelector('.agreement__checkbox');
+  const agreementText = document.querySelector('.agreement__text');
+  let textRedColor = isClassInList(agreementText, 'agreement--notagreed');
+  if (!agreementCheckbox.checked && !textRedColor) {
+    agreementText.classList.add('agreement--notagreed');
+  } else if (agreementCheckbox.checked && textRedColor) {
+    agreementText.classList.remove('agreement--notagreed');
   }
-  alert("Добро пожаловать, " + document.querySelector("#email").value + "!");
+  return agreementCheckbox.checked;
 }
