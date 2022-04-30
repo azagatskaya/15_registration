@@ -81,7 +81,7 @@ position.addEventListener('input', checkPosition);
 
 const tel = document.querySelector("#tel");
 getFromLocalStorage(tel);
-tel.addEventListener('focusout', checkTelephone);
+tel.addEventListener('input', checkTelephone);
 tel.addEventListener('input', handleTelChange);
 
 const company = document.querySelector("#company");
