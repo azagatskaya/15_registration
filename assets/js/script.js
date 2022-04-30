@@ -314,9 +314,10 @@ function handleSubmit(e) {
   checkAllFields() ? alert(`Добро пожаловать, ${email.value}!`) : alert(errorMessage);
 }
 
-const functions = [checkEmail(email), checkPassword1(password1), checkPassword2(password2), checkCountries(country), checkFirstName(firstName), checkFamilyName(familyName), checkPosition(position), checkTelephone(tel), checkCompany(company), checkAgreement()]
 
 function checkAllFields() {
+  const functions = [checkEmail(email), checkPassword1(password1), checkPassword2(password2), checkCountries(country), checkFirstName(firstName), checkFamilyName(familyName), checkPosition(position), checkTelephone(tel), checkCompany(company), checkAgreement()];
+
   let res = true;
   functions.forEach(foo => {
     if (!foo) {
