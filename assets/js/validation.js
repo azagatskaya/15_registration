@@ -51,6 +51,18 @@ const inputsData = {
 	}
 }
 
+
+// const user = {
+// 	email: '',
+// 	password: '',
+// 	country: '',
+// 	firstName: '',
+// 	familyName: '',
+// 	position: '',
+// 	tel: '',
+// 	company: ''
+// }
+
 function checkEmail(event) {
 	const el = event.target ? event.target : event;
 	const {

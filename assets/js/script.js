@@ -57,7 +57,7 @@ function isValueEmpty(value) {
 }
 
 function showMessage(element, regFlag, posMsg, negMsg, label) {
-  if (element.value != '') {
+  if (element.value !== '') { //  if (!isValueEmpty(element.value)) {
     if (element.id !== 'password1' && element.id !== 'password2') {
       localStorage.setItem(element.id, element.value);
     }
@@ -155,7 +155,22 @@ document.querySelector("#submit-button").addEventListener('click', handleSubmit)
 function handleSubmit(e) {
   e.preventDefault();
   let errorMessage = 'Необходимо заполнить все поля';
-  checkAllFields() ? alert(`Добро пожаловать, ${email.value}!`) : alert(errorMessage);
+  if (checkAllFields()) {
+    const user = {
+      email: email.value,
+      password: password1.value,
+      country: country.value,
+      firstName: firstName.value,
+      familyName: familyName.value,
+      position: position.value,
+      tel: tel.value,
+      company: company.value
+    }
+    sendToBackend(user);
+    alert(`Добро пожаловать, ${email.value}!`);
+  } else {
+    alert(errorMessage);
+  }
 }
 
 
@@ -171,3 +186,17 @@ function checkAllFields() {
   return res;
 }
 
+function sendToBackend(user) {
+  fetch('https://httpbin.org/post', {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      }
+    })
+    .then(response => response.json())
+    .then(user => {
+      console.log(user);
+    })
+    .catch(error => console.log(error));
+}
